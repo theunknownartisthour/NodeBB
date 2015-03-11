@@ -550,7 +550,8 @@ define('composer', [
 			$('body').css({'margin-bottom': 0});
 			$('[data-action="post"]').removeAttr('disabled');
 
-			app.toggleNavbar(true);
+			
+			$('html').removeClass('composing mobile');
 		}
 	}
 
