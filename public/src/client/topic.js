@@ -64,6 +64,10 @@ define('forum/topic', [
 				browsing.onUpdateUsersInRoom(data);
 			});
 		}
+
+		components.get('topic').on('click', '[component="post/tools"]', function() {
+			posts.togglePostTools([$(this).parents('[data-pid]').attr('data-pid')]);
+		});
 	};
 
 	Topic.toTop = function() {

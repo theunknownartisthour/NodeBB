@@ -165,12 +165,12 @@ define('forum/topic/posts', [
 			}
 
 			$(window).trigger('action:posts.loaded', {posts: data.posts});
-			onNewPostsLoaded(html, pids);
+			Posts.processPage(html);
 			callback(html);
 		});
 	}
 
-	function onNewPostsLoaded(html, pids) {
+	Posts.togglePostTools = function(pids) {
 		if (app.user.uid) {
 			socket.emit('posts.getPrivileges', pids, function(err, privileges) {
 				if(err) {
@@ -186,8 +186,6 @@ define('forum/topic/posts', [
 				toggleModTools(pids[i], {editable: false, move: false});
 			}
 		}
-
-		Posts.processPage(html);
 	}
 
 	function toggleModTools(pid, privileges) {
