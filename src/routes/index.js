@@ -143,6 +143,8 @@ module.exports = function(app, middleware) {
 		require('./debug')(app, middleware, controllers);
 	}
 
+	app.use(relativePath + '/src/templates.js', express.static(path.join(__dirname, '../../', 'node_modules/templates.js/lib/templates.js')));
+
 	app.use(function(req, res, next) {
 		if (req.user || parseInt(meta.config.privateUploads, 10) !== 1) {
 			return next();

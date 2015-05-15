@@ -617,4 +617,5 @@ app.cacheBuster = null;
 
 	app.alternatingTitle('');
 
+	templates.setupWebWorker(RELATIVE_PATH + '/src/templates.js');
 }());
