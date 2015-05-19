@@ -53,12 +53,7 @@ $(document).ready(function() {
 				return onAjaxError(err, url, callback, quiet);
 			}
 
-			app.template = data.template.name;
-
-			require(['translator'], function(translator) {
-				translator.load(config.defaultLang, data.template.name);
-				renderTemplate(url, data.template.name, data, callback);
-			});
+			render(url, data, callback);
 		});
 
 		require(['search'], function(search) {
@@ -102,6 +97,15 @@ $(document).ready(function() {
 		}
 		return url;
 	};
+
+	function render(url, data, callback) {
+		app.template = data.template.name;
+
+		require(['translator'], function(translator) {
+			translator.load(config.defaultLang, data.template.name);
+			renderTemplate(url, data.template.name, data, callback);
+		});
+	}
 
 	function onAjaxError(err, url, callback, quiet) {
 		var data = err.data,
