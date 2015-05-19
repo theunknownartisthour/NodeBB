@@ -24,16 +24,20 @@ $(document).ready(function() {
 		if (ev !== null && ev.state && ev.state.url !== undefined) {
 			ajaxify.go(ev.state.url, function() {
 				$(window).trigger('action:popstate', {url: ev.state.url});
-			}, true);
+			}, {
+				quiet: true
+			});
 		}
 	});
 
 	ajaxify.currentPage = null;
 
-	ajaxify.go = function (url, callback, quiet) {
+	ajaxify.go = function (url, callback, opt) {
 		if (ajaxify.handleRedirects(url)) {
 			return true;
 		}
+
+		opt = opt || {};
 
 		app.enterRoom('');
 
@@ -43,14 +47,14 @@ $(document).ready(function() {
 			apiXHR.abort();
 		}
 
-		url = ajaxify.start(url, quiet);
+		url = ajaxify.start(url, opt.quiet);
 
 		$('#footer, #content').removeClass('hide').addClass('ajaxifying');
 
 		ajaxify.variables.flush();
 		ajaxify.loadData(url, function(err, data) {
 			if (err) {
-				return onAjaxError(err, url, callback, quiet);
+				return onAjaxError(err, url, callback, opt.quiet);
 			}
 
 			render(url, data, callback);
@@ -125,7 +129,9 @@ $(document).ready(function() {
 				if (data.responseJSON.external) {
 					window.location.href = data.responseJSON.external;
 				} else if (typeof data.responseJSON === 'string') {
-					ajaxify.go(data.responseJSON.slice(1), callback, quiet);
+					ajaxify.go(data.responseJSON.slice(1), callback, {
+						quiet: quiet
+					});
 				}
 			}
 		} else if (textStatus !== 'abort') {

@@ -72,7 +72,9 @@ define('forum/chats', ['components', 'string', 'sounds', 'forum/infinitescroll',
 				var text = components.get('chat/input').val();
 				ajaxify.go('chats', function() {
 					app.openChat(username, uid);
-				}, true);
+				}, {
+					quiet: true
+				});
 
 				$(window).one('action:chat.loaded', function() {
 					components.get('chat/input').val(text);
