@@ -62,6 +62,10 @@ $(document).ready(function() {
 				render(url, data, callback);
 			});
 		} else {
+			opt.data.template = {
+				name: url
+			};
+
 			render(url, opt.data, callback);
 		}
 
