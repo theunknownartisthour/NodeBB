@@ -9,6 +9,7 @@ app.isConnected = false;
 app.currentRoom = null;
 app.widgets = {};
 app.cacheBuster = null;
+app.frame = 'body';
 
 (function () {
 	var showWelcomeMessage = false;

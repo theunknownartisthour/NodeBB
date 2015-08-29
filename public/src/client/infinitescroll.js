@@ -13,14 +13,14 @@ define('forum/infinitescroll', ['translator'], function(translator) {
 	scroll.init = function(cb, _topOffest) {
 		callback = cb;
 		topOffset = _topOffest || 0;
-		$(window).off('scroll', onScroll).on('scroll', onScroll);
+		$(app.frame).off('scroll', onScroll).on('scroll', onScroll);
 	};
 
 	function onScroll() {
 		var originalPostEl = $('li[data-index="0"]'),
-			top = $(window).height() * 0.15 + topOffset + (originalPostEl ? originalPostEl.outerHeight() : 0),
-			bottom = ($(document).height() - $(window).height()) * 0.85,
-			currentScrollTop = $(window).scrollTop();
+			top = $(app.frame).height() * 0.15 + topOffset + (originalPostEl ? originalPostEl.outerHeight() : 0),
+			bottom = ($(document).height() - $(app.frame).height()) * 0.85,
+			currentScrollTop = $(app.frame).scrollTop();
 
 		if(currentScrollTop < top && currentScrollTop < previousScrollTop) {
 			callback(-1);

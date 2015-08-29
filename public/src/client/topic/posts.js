@@ -145,29 +145,29 @@ define('forum/topic/posts', [
 			} else if (before) {
 				// Save document height and position for future reference (about 5 lines down)
 				var height = $(document).height(),
-					scrollTop = $(document).scrollTop(),
+					scrollTop = $(app.frame).scrollTop(),
 					originalPostEl = components.get('post', 'index', 0);
 
 				// Insert the new post
-				html.insertBefore(before);
+				//html.insertBefore(before);
 
 				// If the user is not at the top of the page... (or reasonably so...)
 				if (scrollTop > originalPostEl.offset().top) {
 					// Now restore the relative position the user was on prior to new post insertion
-					$(document).scrollTop(scrollTop + ($(document).height() - height));
+					//$(app.frame).scrollTop(scrollTop + ($(document).height() - height));
 				}
 			} else {
 				components.get('topic').append(html);
 			}
 
-			html.hide().fadeIn('slow');
+			//html.hide().fadeIn('slow');
 
 			var pids = [];
 			for(var i=0; i<data.posts.length; ++i) {
 				pids.push(data.posts[i].pid);
 			}
 
-			$(window).trigger('action:posts.loaded', {posts: data.posts});
+			//$(window).trigger('action:posts.loaded', {posts: data.posts});
 			onNewPostsLoaded(html, pids);
 			callback(html);
 		});
