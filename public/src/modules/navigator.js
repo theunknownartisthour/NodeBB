@@ -18,7 +18,7 @@ define('navigator', ['forum/pagination', 'components'], function(pagination, com
 		toTop = toTop || function() {};
 		toBottom = toBottom || function() {};
 
-		$(window).on('scroll', navigator.update);
+		$(app.frame).on('scroll', navigator.update);
 
 		$('.pagination-block .dropdown-menu').off('click').on('click', function(e) {
 			e.stopPropagation();

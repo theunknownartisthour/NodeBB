@@ -249,9 +249,12 @@ define('forum/topic', [
 			if (newUrl !== currentUrl) {
 				if (history.replaceState) {
 					var search = (window.location.search ? window.location.search : '');
+					
+					var scrollpos = $(app.frame).scrollTop();
 					history.replaceState({
 						url: newUrl + search
 					}, null, window.location.protocol + '//' + window.location.host + RELATIVE_PATH + '/' + newUrl + search);
+					$(app.frame).scrollTop(scrollpos);
 				}
 				currentUrl = newUrl;
 			}

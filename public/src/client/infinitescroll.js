@@ -18,8 +18,8 @@ define('forum/infinitescroll', ['translator'], function(translator) {
 
 	function onScroll() {
 		var originalPostEl = $('li[data-index="0"]'),
-			top = $(app.frame).height() * 0.15 + topOffset + (originalPostEl ? originalPostEl.outerHeight() : 0),
-			bottom = ($(document).height() - $(app.frame).height()) * 0.85,
+			top = $(window).height() * 0.15 + topOffset + (originalPostEl ? originalPostEl.outerHeight() : 0),
+			bottom = ($(document).height() - $(window).height()) * 0.85,
 			currentScrollTop = $(app.frame).scrollTop();
 
 		if(currentScrollTop < top && currentScrollTop < previousScrollTop) {
