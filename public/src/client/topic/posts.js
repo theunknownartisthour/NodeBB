@@ -149,18 +149,18 @@ define('forum/topic/posts', [
 					originalPostEl = components.get('post', 'index', 0);
 
 				// Insert the new post
-				//html.insertBefore(before);
+				html.insertBefore(before);
 
 				// If the user is not at the top of the page... (or reasonably so...)
 				if (scrollTop > originalPostEl.offset().top) {
 					// Now restore the relative position the user was on prior to new post insertion
-					//$(app.frame).scrollTop(scrollTop + ($(document).height() - height));
+					$(app.frame).scrollTop(scrollTop + ($(document).height() - height));
 				}
 			} else {
 				components.get('topic').append(html);
 			}
 
-			//html.hide().fadeIn('slow');
+			html.hide().fadeIn('slow');
 
 			var pids = [];
 			for(var i=0; i<data.posts.length; ++i) {
