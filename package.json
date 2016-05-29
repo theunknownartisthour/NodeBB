@@ -45,7 +45,7 @@
     "nodebb-plugin-emoji-extended": "0.4.9",
     "nodebb-plugin-markdown": "4.0.5",
     "nodebb-plugin-mentions": "1.0.1",
-    "nodebb-plugin-paypal-subscriptions": "https://github.com/theunknownartisthour/nodebb-plugin-paypal-subscriptions"
+    "nodebb-plugin-paypal-subscriptions": "https://github.com/theunknownartisthour/nodebb-plugin-paypal-subscriptions#latest",
     "nodebb-plugin-soundpack-default": "0.1.4",
     "nodebb-plugin-spam-be-gone": "0.4.1",
     "nodebb-rewards-essentials": "0.0.5",
